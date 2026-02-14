@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TestTrack Pro - Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="login-page">
+    <div class="container">
+        <div class="login-box">
+            <div class="logo">
+                <h1>TestTrack Pro</h1>
+                <p>Comprehensive Testing Platform</p>
+            </div>
+
+            <form id="loginForm" class="form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="user@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+
+            <div class="auth-links">
+                <p>Don't have an account? <a href="register.html">Register here</a></p>
+            </div>
+
+            <div class="demo-credentials">
+                <h4>Demo Credentials</h4>
+                <p><strong>Tester:</strong> tester1@testtrack.com / tester123</p>
+                <p><strong>Developer:</strong> developer1@testtrack.com / dev123</p>
+            </div>
+
+            <div id="message" class="message"></div>
+        </div>
+    </div>
+
+    <script src="api.js"></script>
+    <script src="auth.js"></script>
+</body>
+
+</html>

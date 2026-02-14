@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: testtrack_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: testtrack_pro
+      MYSQL_USER: testtrack
+      MYSQL_PASSWORD: testtrack123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    networks:
+      - testtrack_network
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: testtrack_backend
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: testtrack
+      MYSQL_PASSWORD: testtrack123
+      MYSQL_DB: testtrack_pro
+      FLASK_ENV: development
+      SECRET_KEY: dev-secret-key
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - testtrack_network
+    command: python app_enterprise.py
+
+  frontend:
+    image: node:18-alpine
+    container_name: testtrack_frontend
+    working_dir: /app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./frontend:/app
+    networks:
+      - testtrack_network
+    command: python -m http.server 8000
+
+volumes:
+  mysql_data:
+
+
+networks:
+  testtrack_network:
+    driver: bridge

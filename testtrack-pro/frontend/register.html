@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TestTrack Pro - Register</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="register-page">
+    <div class="container">
+        <div class="register-box">
+            <div class="logo">
+                <h1>TestTrack Pro</h1>
+                <p>Create Account</p>
+            </div>
+
+            <form id="registerForm" class="form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required placeholder="username">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="user@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter password">
+                </div>
+
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <select id="role" name="role" required>
+                        <option value="tester">Tester</option>
+                        <option value="developer">Developer</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+
+            <div class="auth-links">
+                <p>Already have an account? <a href="login.html">Login here</a></p>
+            </div>
+
+            <div id="message" class="message"></div>
+        </div>
+    </div>
+
+    <script src="api.js"></script>
+    <script src="auth.js"></script>
+</body>
+
+</html>

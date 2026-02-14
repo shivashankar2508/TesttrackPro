@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TestTrack Pro - Test Cases</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="testcases-page">
+    <div class="layout">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="dashboard.html">TestTrack Pro</a>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="dashboard.html" class="nav-link">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="testcases.html" class="nav-link active">Test Cases</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reports.html" class="nav-link">Reports</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" id="logoutBtn" class="nav-link">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="user-info">
+                <h3 id="username">User</h3>
+                <p id="userRole">Role</p>
+            </div>
+            <ul class="menu">
+                <li><a href="dashboard.html" class="menu-link">Dashboard</a></li>
+                <li><a href="testcases.html" class="menu-link active">Test Cases</a></li>
+                <li><a href="reports.html" class="menu-link">Reports</a></li>
+                <li><a href="settings.html" class="menu-link">Settings</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="header">
+                <h1>Test Cases</h1>
+                <div class="header-actions">
+                    <button id="createCaseBtn" class="btn btn-primary">Create Test Case</button>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="statusFilter">Status:</label>
+                    <select id="statusFilter">
+                        <option value="">All</option>
+                        <option value="created">Created</option>
+                        <option value="pending">Pending</option>
+                        <option value="passed">Passed</option>
+                        <option value="failed">Failed</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="priorityFilter">Priority:</label>
+                    <select id="priorityFilter">
+                        <option value="">All</option>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                        <option value="critical">Critical</option>
+                    </select>
+                </div>
+                <button id="applyFilters" class="btn btn-small">Apply Filters</button>
+            </div>
+
+            <!-- Test Cases Table -->
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Module</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th>Created</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="testcasesTable">
+                        <tr>
+                            <td colspan="6" class="text-center">Loading test cases...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Create/Edit Test Case Modal -->
+    <div id="testcaseModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Create Test Case</h2>
+            <form id="testcaseForm" class="form">
+                <input type="hidden" id="testcaseId">
+
+                <div class="form-group">
+                    <label for="title">Title *</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description *</label>
+                    <textarea id="description" name="description" rows="3" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="module">Module *</label>
+                    <input type="text" id="module" name="module" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="steps">Steps *</label>
+                    <textarea id="steps" name="steps" rows="4" required
+                        placeholder="1. Step one&#10;2. Step two&#10;3. Step three"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="expectedResult">Expected Result *</label>
+                    <textarea id="expectedResult" name="expectedResult" rows="3" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="priority">Priority</label>
+                    <select id="priority" name="priority">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                        <option value="critical">Critical</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save Test Case</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="api.js"></script>
+    <script src="testcases.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TestTrack Pro - Reports</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="reports-page">
+    <div class="layout">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="dashboard.html">TestTrack Pro</a>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="dashboard.html" class="nav-link">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="testcases.html" class="nav-link">Test Cases</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reports.html" class="nav-link active">Reports</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" id="logoutBtn" class="nav-link">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="user-info">
+                <h3 id="username">User</h3>
+                <p id="userRole">Role</p>
+            </div>
+            <ul class="menu">
+                <li><a href="dashboard.html" class="menu-link">Dashboard</a></li>
+                <li><a href="testcases.html" class="menu-link">Test Cases</a></li>
+                <li><a href="reports.html" class="menu-link active">Reports</a></li>
+                <li><a href="settings.html" class="menu-link">Settings</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="header">
+                <h1>Test Reports</h1>
+                <button id="exportBtn" class="btn btn-primary">Export Report</button>
+            </div>
+
+            <!-- Summary Report -->
+            <section class="report-section">
+                <h2>Summary Report</h2>
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <h3>Total Tests Executed</h3>
+                        <span class="value" id="summaryTotal">0</span>
+                    </div>
+                    <div class="summary-card success">
+                        <h3>Passed</h3>
+                        <span class="value" id="summaryPassed">0</span>
+                    </div>
+                    <div class="summary-card danger">
+                        <h3>Failed</h3>
+                        <span class="value" id="summaryFailed">0</span>
+                    </div>
+                    <div class="summary-card warning">
+                        <h3>Pending</h3>
+                        <span class="value" id="summaryPending">0</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Module-wise Report -->
+            <section class="report-section">
+                <h2>Module-wise Report</h2>
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Module</th>
+                                <th>Total</th>
+                                <th>Passed</th>
+                                <th>Failed</th>
+                                <th>Pass Rate</th>
+                            </tr>
+                        </thead>
+                        <tbody id="moduleReport">
+                            <tr>
+                                <td colspan="5" class="text-center">Loading report data...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="api.js"></script>
+    <script src="reports.js"></script>
+</body>
+
+</html>
